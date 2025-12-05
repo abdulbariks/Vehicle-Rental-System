@@ -1,22 +1,21 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import initDB from "./confing/db";
 import { authRoutes } from "./modules/auth/auth.routes";
+import { userRoutes } from "./modules/users/user.routes";
+import { vehiclesRoutes } from "./modules/vehicles/vehicles.routes";
 
 const app = express();
-// parser
 app.use(express.json());
-// app.use(express.urlencoded());
 
-// initializing DB
 initDB();
 
-// "/" -> localhost:5000/
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (req, res) => {
   res.send("Hello Next Level Developers!");
 });
 
-//auth routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/vehicles", vehiclesRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
@@ -25,5 +24,4 @@ app.use((req, res) => {
     path: req.path,
   });
 });
-
 export default app;

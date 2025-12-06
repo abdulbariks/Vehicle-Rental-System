@@ -5,10 +5,7 @@ import auth from "../../middleware/auth.middleware";
 const router = express.Router();
 
 router.get("/",auth("admin"), userControllers.getUser);
-router.get("/:id", userControllers.getSingleUser);
-
-router.put("/:id", userControllers.updateUser);
-
-router.delete("/:id", userControllers.deleteUser);
+router.put("/:userId", userControllers.updateUser);
+router.delete("/:userId",auth("admin"), userControllers.deleteUser);
 
 export const userRoutes = router;

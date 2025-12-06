@@ -7,7 +7,7 @@ const createVehicles = async (req: Request, res: Response) => {
   try {
     const result = await vehiclesServices.createVehicles(req.body);
 
-    console.log("result==========", result);
+    // console.log("result==========", result);
 
     res.status(201).json({
       success: true,
@@ -42,7 +42,7 @@ const getVehicles = async (req: Request, res: Response) => {
 
 const getSingleVehicle = async (req: Request, res: Response) => {
   try {
-    const result = await vehiclesServices.getSingleVehicle(req.params.id!);
+    const result = await vehiclesServices.getSingleVehicle(req.params.vehicleId!);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: "Vehicle not found" });
@@ -59,7 +59,7 @@ const updateVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehiclesServices.updateVehicle(
       req.body,
-      req.params.id!
+      req.params.vehicleId!
     );
 
     if (result.rows.length === 0) {
@@ -75,7 +75,7 @@ const updateVehicle = async (req: Request, res: Response) => {
 
 const deleteVehicle = async (req: Request, res: Response) => {
   try {
-    const result = await vehiclesServices.deleteVehicle(req.params.id!);
+    const result = await vehiclesServices.deleteVehicle(req.params.vehicleId!);
 
     if (result.rowCount === 0) {
       return res.status(404).json({ error: "Vehicle not found" });

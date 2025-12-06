@@ -11,7 +11,7 @@ app.use(express.json());
 initDB();
 
 app.get("/", (req, res) => {
-  res.send("Hello Next Level Developers!");
+  res.send("I am Next Level Developers!");
 });
 
 app.use("/api/v1/auth", authRoutes);

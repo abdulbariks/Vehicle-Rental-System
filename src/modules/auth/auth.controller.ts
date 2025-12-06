@@ -5,10 +5,12 @@ const signupUser = async (req: Request, res: Response) => {
   try {
     const result = await authServices.signupUser(req.body);
     // console.log(result.rows[0]);
+    const user = result.rows[0];
+    delete user.password;
     res.status(201).json({
-      success: false,
-      message: "User SignUp Successfully",
-      data: result.rows[0],
+      success: true,
+      message: "User registered successfully",
+      data: user,
     });
   } catch (err: any) {
     console.log(err);
@@ -21,6 +23,7 @@ const signupUser = async (req: Request, res: Response) => {
 
 const signinUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
+  console.log(req.body);
 
   try {
     const result = await authServices.loginUser(email, password);

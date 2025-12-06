@@ -43,7 +43,7 @@ const loginUser = async (email: string, password: string) => {
     }
   );
   console.log({ token });
-
+  delete user.password;
   return { token, user };
 };
 

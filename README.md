@@ -7,7 +7,7 @@ This API supports role-based authentication, vehicle management, customer manage
 
 ## Live API URL:
 
-## GitHub Repository:
+## GitHub Repository: https://github.com/abdulbariks/Vehicle-Rental-System
 
 ---
 
@@ -101,9 +101,9 @@ npm run dev
 
 ### Base URL
 
-```ts
-/api/1v;
-```
+````ts
+``` /api/v1 ``
+````
 
 ### Authentication
 

@@ -102,7 +102,7 @@ npm run dev
 ### Base URL
 
 ````ts
-``` /api/v1 ``
+``` /api/v1 ```
 ````
 
 ### Authentication

@@ -17,12 +17,10 @@ const signupUser = async (payload: Record<string, unknown>) => {
 };
 
 const loginUser = async (email: string, password: string) => {
-  console.log({ email });
   const result = await pool.query(`SELECT * FROM users WHERE email=$1`, [
     email,
   ]);
 
-  console.log({ result });
   if (result.rows.length === 0) {
     return null;
   }
@@ -42,7 +40,6 @@ const loginUser = async (email: string, password: string) => {
       expiresIn: "7d",
     }
   );
-  console.log({ token });
   delete user.password;
   return { token, user };
 };

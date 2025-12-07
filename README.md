@@ -5,7 +5,7 @@ This API supports role-based authentication, vehicle management, customer manage
 
 ---
 
-## Live API URL:
+## Live API URL: https://barik-vehicle-rental-system.vercel.app/
 
 ## GitHub Repository: https://github.com/abdulbariks/Vehicle-Rental-System
 
@@ -102,7 +102,7 @@ npm run dev
 ### Base URL
 
 ````ts
-``` /api/v1 ```
+``` https://barik-vehicle-rental-system.vercel.app/api/v1 ```
 ````
 
 ### Authentication

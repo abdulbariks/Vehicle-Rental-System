@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { pool } from "../../confing/db";
 import config from "../../confing/config";
 
+// signup User 
 const signupUser = async (payload: Record<string, unknown>) => {
   const { name, email, password, phone, role } = payload;
 
@@ -16,21 +17,27 @@ const signupUser = async (payload: Record<string, unknown>) => {
   return result;
 };
 
+// login User 
 const loginUser = async (email: string, password: string) => {
   const result = await pool.query(`SELECT * FROM users WHERE email=$1`, [
     email,
   ]);
 
   if (result.rows.length === 0) {
-    return null;
+    return {
+      success: false,
+      message: "User not found",
+    };
   }
   const user = result.rows[0];
 
   const match = await bcrypt.compare(password, user.password);
 
-  console.log({ match, user });
   if (!match) {
-    return false;
+      return {
+      success: false,
+      message: "Incorrect password",
+    };
   }
 
   const token = jwt.sign(
